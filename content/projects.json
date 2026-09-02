@@ -1,16 +1,15 @@
 {
   "_not": "PROJE EKLEME REHBERI - asagidaki 'projects' dizisine yeni bir nesne ekle. Alanlar:",
   "_alanlar": {
-    "slug":     "benzersiz kisa ad (url-dostu, bosluksuz)",
-    "type":     "game | web | tool | other  -> filtre butonlarini belirler",
+    "slug": "benzersiz kisa ad (url-dostu, bosluksuz)",
+    "type": "game | web | tool | other  -> filtre butonlarini belirler",
     "featured": "true ise ana sayfada 'One Cikan Projeler' bolumunde gorunur",
-    "date":     "YYYY-MM  (siralama icin, yeniden eskiye)",
-    "cover":    "kapak gorseli yolu, orn: /assets/img/projects/oyunum.png  (bos birakabilirsin)",
-    "tags":     "teknoloji etiketleri dizisi",
-    "tr / en":  "title (baslik) ve summary (kisa aciklama)",
-    "links":    "her biri {label, url} olan dizi - GitHub, itch.io, canli site vb."
+    "date": "YYYY-MM  (siralama icin, yeniden eskiye)",
+    "cover": "kapak gorseli yolu, orn: /assets/img/projects/oyunum.png  (bos birakabilirsin)",
+    "tags": "teknoloji etiketleri dizisi",
+    "tr / en": "title (baslik) ve summary (kisa aciklama)",
+    "links": "her biri {label, url} olan dizi - GitHub, itch.io, canli site vb."
   },
-
   "projects": [
     {
       "slug": "ornek-oyun",
@@ -18,7 +17,11 @@
       "featured": true,
       "date": "2026-06",
       "cover": "",
-      "tags": ["Unity", "C#", "2D"],
+      "tags": [
+        "Unity",
+        "C#",
+        "2D"
+      ],
       "tr": {
         "title": "Örnek Oyun",
         "summary": "Bu bir örnek proje kartı. Kendi oyununu eklerken bu bloğu kopyalayıp içini doldurabilirsin."
@@ -28,27 +31,40 @@
         "summary": "This is a sample project card. Copy this block and fill it in when you add your own game."
       },
       "links": [
-        { "label": "itch.io", "url": "https://itch.io" },
-        { "label": "GitHub",  "url": "https://github.com" }
+        {
+          "label": "itch.io",
+          "url": "https://itch.io"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com"
+        }
       ]
     },
     {
-      "slug": "ornek-web-projesi",
+      "slug": "ahdem",
       "type": "web",
       "featured": true,
-      "date": "2026-04",
-      "cover": "",
-      "tags": ["JavaScript", "CSS"],
+      "date": "2026-08",
+      "cover": "/assets/img/projects/paylasim-41cyn.webp",
+      "tags": [
+        "HTML",
+        "CSS",
+        "Python"
+      ],
       "tr": {
-        "title": "Örnek Web Projesi",
-        "summary": "Geliştirdiğin bir web sitesi veya uygulama burada tanıtılır."
+        "title": "AHDEM Konferans Websitesi",
+        "summary": "Yapay zeka destekli olarak hazırladığım bir öğrenci topluluğu sayfasıdır. AHDEM topluluğu için yapılmış olup konferans döneminde aktif olarak kullanılmıştır."
       },
       "en": {
-        "title": "Example Web Project",
-        "summary": "A website or app you have built gets introduced here."
+        "title": "AHDEM Conference Website",
+        "summary": "This is a Student Society page I created with the help of artificial intelligence. It was developed for the AHDEM Society and was actively used during the conference period."
       },
       "links": [
-        { "label": "Canlı", "url": "https://example.com" }
+        {
+          "label": "Canlı",
+          "url": "https://ahdem.online/"
+        }
       ]
     },
     {
@@ -57,7 +73,10 @@
       "featured": false,
       "date": "2026-01",
       "cover": "",
-      "tags": ["Python", "CLI"],
+      "tags": [
+        "Python",
+        "CLI"
+      ],
       "tr": {
         "title": "Örnek Araç",
         "summary": "Kendin için yazdığın küçük araçlar da portfolyoda değerlidir."
@@ -67,7 +86,10 @@
         "summary": "Small tools you built for yourself are valuable in a portfolio too."
       },
       "links": [
-        { "label": "GitHub", "url": "https://github.com" }
+        {
+          "label": "GitHub",
+          "url": "https://github.com"
+        }
       ]
     }
   ]

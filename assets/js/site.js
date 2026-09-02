@@ -174,9 +174,9 @@ function renderFooter(profile){
   host.innerHTML =
     '<div class="wrap footer-inner">' +
       '<p>© ' + years + ' ' + esc(SITE.name) + ' · <span data-i18n="footer.rights"></span></p>' +
-      '<div class="social">' + social +
-        '<a href="/feed.xml" title="RSS"><span class="sr-only">RSS</span>' + icon('rss') + '</a>' +
-      '</div>' +
+      // RSS beslemesi calismaya devam ediyor (/feed.xml) ama gorunur simge
+      // koymuyoruz; okuyucular head'deki <link rel="alternate"> ile bulur.
+      '<div class="social">' + social + '</div>' +
     '</div>';
 }
 

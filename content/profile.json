@@ -3,16 +3,16 @@
   "name": "Emre Biltekin",
   "avatar": "/assets/img/1783927044102-4n7v7.webp",
   "role": {
-    "tr": "Öğrenci",
-    "en": "Student"
+    "tr": "İşletme Son Sınıf Öğrencisi",
+    "en": "Final-Year Business Student"
   },
   "tagline": {
-    "tr": "Oyunlar ve web projeleri geliştiriyorum; teknoloji ve finans üzerine yazıyorum.",
-    "en": "I build games and web projects, and write about technology and finance."
+    "tr": "İşletme son sınıf öğrencisiyim. Web projeleri geliştiriyor, teknoloji ve finans üzerine yazıyorum.",
+    "en": "Final-year business student. I build web projects and write about technology and finance."
   },
   "bio": {
-    "tr": "Buraya kendini birkaç paragrafla anlatacaksın. Ne yaptığın, neyle ilgilendiğin, hangi teknolojilerle çalıştığın, seni diğerlerinden ayıran ne — bunlar burada yer alacak.\n\nİkinci paragrafta ilgi alanlarından bahsedebilirsin: oyun geliştirme, ağ teknolojileri, finans piyasaları gibi.",
-    "en": "This is where you introduce yourself in a couple of paragraphs. What you do, what you are interested in, which technologies you work with, and what sets you apart.\n\nIn the second paragraph you can mention your interests: game development, networking, financial markets, and so on."
+    "tr": "İşletme bölümünde son sınıf öğrencisiyim ve yakında mezun oluyorum. İşletme okumakla yazılımla uğraşmak bana birbirinden kopuk iki şey gibi gelmiyor — ikisi de bir sistemin nasıl çalıştığını ve neyin neyi tetiklediğini anlamakla ilgili.\n\nBoş vakitlerimde web projeleri geliştiriyorum; öğrenci topluluğu için hazırladığım AHDEM konferans sitesi bunlardan biri. Finansal piyasalar, satranç ve oyunlar ilgimi çeken diğer alanlar. Bu sitede de ağırlıkla bunlar üzerine yazacağım.",
+    "en": "I am a final-year business administration student, graduating soon. Studying business and building software do not feel like two separate things to me — both are about understanding how a system works and what causes what.\n\nIn my spare time I build web projects; the AHDEM conference site I made for a student society is one of them. Financial markets, chess and games are my other interests, and they are mostly what I will be writing about here."
   },
   "location": {
     "tr": "Türkiye",

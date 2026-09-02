@@ -361,7 +361,7 @@ function buildFeed(posts){
   <channel>
     <title>${attr(SITE.name)}</title>
     <link>${SITE.url}/</link>
-    <description>Oyun geliştirme, teknoloji ve finans üzerine yazılar.</description>
+    <description>Teknoloji, finans ve öğrendiklerim üzerine yazılar.</description>
     <language>tr</language>
     <atom:link href="${SITE.url}/feed.xml" rel="self" type="application/rss+xml"/>
 

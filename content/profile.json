@@ -1,0 +1,52 @@
+{
+  "_not": "Bu dosya kisisel bilgilerini tutar. Admin panelinden de duzenlenebilecek. Simdilik ORNEK degerler var - birlikte dolduracagiz.",
+
+  "name": "Emre Biltekin",
+  "avatar": "",
+
+  "role": {
+    "tr": "Oyun & Web Geliştirici",
+    "en": "Game & Web Developer"
+  },
+
+  "tagline": {
+    "tr": "Oyunlar ve web projeleri geliştiriyorum; teknoloji ve finans üzerine yazıyorum.",
+    "en": "I build games and web projects, and write about technology and finance."
+  },
+
+  "bio": {
+    "tr": "Buraya kendini birkaç paragrafla anlatacaksın. Ne yaptığın, neyle ilgilendiğin, hangi teknolojilerle çalıştığın, seni diğerlerinden ayıran ne — bunlar burada yer alacak.\n\nİkinci paragrafta ilgi alanlarından bahsedebilirsin: oyun geliştirme, ağ teknolojileri, finans piyasaları gibi.",
+    "en": "This is where you introduce yourself in a couple of paragraphs. What you do, what you are interested in, which technologies you work with, and what sets you apart.\n\nIn the second paragraph you can mention your interests: game development, networking, financial markets, and so on."
+  },
+
+  "location": {
+    "tr": "Türkiye",
+    "en": "Turkey"
+  },
+
+  "email": "emrebiltekin533@gmail.com",
+
+  "social": [
+    { "label": "GitHub",   "icon": "github",   "url": "https://github.com/lizer20" },
+    { "label": "E-posta",  "icon": "mail",     "url": "mailto:emrebiltekin533@gmail.com" }
+  ],
+
+  "skills": [
+    {
+      "group": { "tr": "Oyun Geliştirme", "en": "Game Development" },
+      "items": ["Unity", "C#", "Godot", "Game Design"]
+    },
+    {
+      "group": { "tr": "Web", "en": "Web" },
+      "items": ["HTML", "CSS", "JavaScript", "React"]
+    },
+    {
+      "group": { "tr": "Ağ & Sistem", "en": "Networking & Systems" },
+      "items": ["TCP/IP", "Linux", "Docker"]
+    },
+    {
+      "group": { "tr": "İlgi Alanları", "en": "Interests" },
+      "items": ["Finansal Piyasalar", "Veri Analizi"]
+    }
+  ]
+}

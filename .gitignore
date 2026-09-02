@@ -1,0 +1,17 @@
+# Ortam / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ASLA commit edilmemesi gerekenler
+# Admin paneli token'i sadece tarayicinin localStorage'inda durur,
+# ama yine de yanlislikla dosyaya yazilirsa diye koruma:
+*.token
+*.secret
+.env
+.env.*
+secrets.json
+
+# Gecici renk karsilastirma sayfasi (yayina cikmasin)
+_palette.html

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Tema tercihini sayfa cizilmeden once uygula (ekran yanip sonmesin) */
+try{ if(localStorage.getItem('site.theme')==='light') document.documentElement.dataset.theme='light'; }catch(e){}</script>
+<title>Emre Biltekin — Oyun & Web Geliştirici</title>
+<meta name="description" content="Emre Biltekin'in kişisel sitesi. Oyunlar, web projeleri ve teknoloji ile finans üzerine yazılar.">
+<link rel="canonical" href="https://emrebiltekin.me/">
+
+<!-- Paylasim kartlari -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Emre Biltekin">
+<meta property="og:title" content="Emre Biltekin — Oyun & Web Geliştirici">
+<meta property="og:description" content="Oyunlar, web projeleri ve teknoloji ile finans üzerine yazılar.">
+<meta property="og:url" content="https://emrebiltekin.me/">
+<meta property="og:image" content="https://emrebiltekin.me/assets/img/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="alternate" type="application/rss+xml" title="Emre Biltekin" href="/feed.xml">
+</head>
+
+<body data-page="home">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<header id="site-header"></header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow"><span class="pulse"></span><span id="heroRole">—</span></span>
+        <h1 id="heroName">Emre Biltekin</h1>
+        <p class="lead" id="heroTagline"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/projects.html"><span data-i18n="nav.projects"></span></a>
+          <a class="btn btn-ghost" href="/about.html"><span data-i18n="nav.about"></span></a>
+        </div>
+      </div>
+      <div class="avatar-frame" id="heroAvatar"></div>
+    </div>
+  </section>
+
+  <!-- One cikan projeler -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="home.featured.title"></h2>
+          <p data-i18n="home.featured.desc"></p>
+        </div>
+        <a class="link-more" href="/projects.html"><span data-i18n="home.featured.all"></span> →</a>
+      </div>
+      <div class="grid" id="featuredProjects">
+        <div class="loading" data-i18n="common.loading"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Son yazilar -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="home.latest.title"></h2>
+          <p data-i18n="home.latest.desc"></p>
+        </div>
+        <a class="link-more" href="/blog.html"><span data-i18n="home.latest.all"></span> →</a>
+      </div>
+      <ul class="post-list" id="latestPosts">
+        <li class="loading" data-i18n="common.loading"></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<noscript>
+  <div class="wrap" style="padding:24px 0;color:#9AA5B4">
+    Bu site içeriği göstermek için JavaScript kullanıyor. Lütfen JavaScript'i etkinleştir.
+  </div>
+</noscript>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/pages.js"></script>
+</body>
+</html>

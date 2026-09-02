@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Tema tercihini sayfa cizilmeden once uygula (ekran yanip sonmesin) */
+try{ if(localStorage.getItem('site.theme')==='light') document.documentElement.dataset.theme='light'; }catch(e){}</script>
+<title>Hakkımda — Emre Biltekin</title>
+<meta name="description" content="Emre Biltekin kimdir, neler yapar, hangi teknolojilerle çalışır.">
+<link rel="canonical" href="https://emrebiltekin.me/about.html">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Emre Biltekin">
+<meta property="og:title" content="Hakkımda — Emre Biltekin">
+<meta property="og:description" content="Kimim, neler yapıyorum, hangi teknolojilerle çalışıyorum.">
+<meta property="og:url" content="https://emrebiltekin.me/about.html">
+<meta property="og:image" content="https://emrebiltekin.me/assets/img/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body data-page="about">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<header id="site-header"></header>
+
+<main id="main" class="section">
+  <div class="wrap">
+    <h1 data-i18n="about.title"></h1>
+
+    <div class="hero-inner" style="margin-top:32px">
+      <div>
+        <div class="prose" id="aboutBio"></div>
+        <div id="aboutSkills" style="margin-top:40px"></div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/contact.html"><span data-i18n="nav.contact"></span></a>
+          <a class="btn btn-ghost" href="/projects.html"><span data-i18n="nav.projects"></span></a>
+        </div>
+      </div>
+      <div class="avatar-frame" id="aboutAvatar"></div>
+    </div>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/pages.js"></script>
+</body>
+</html>

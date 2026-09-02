@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RSS beslemesi. Yeni yazi yayinlandiginda admin paneli bu dosyaya yeni bir <item> ekleyecek. -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emre Biltekin</title>
+    <link>https://emrebiltekin.me/</link>
+    <description>Oyun geliştirme, teknoloji ve finans üzerine yazılar.</description>
+    <language>tr</language>
+    <atom:link href="https://emrebiltekin.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Merhaba Dünya</title>
+      <link>https://emrebiltekin.me/blog/merhaba-dunya.html</link>
+      <guid isPermaLink="true">https://emrebiltekin.me/blog/merhaba-dunya.html</guid>
+      <pubDate>Wed, 02 Sep 2026 09:00:00 +0300</pubDate>
+      <description>Bu sitenin ilk yazısı. Neden kendi sitemi yaptığımı ve burada neler paylaşacağımı anlatıyorum.</description>
+    </item>
+
+  </channel>
+</rss>

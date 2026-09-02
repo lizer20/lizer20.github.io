@@ -1,0 +1,74 @@
+{
+  "_not": "PROJE EKLEME REHBERI - asagidaki 'projects' dizisine yeni bir nesne ekle. Alanlar:",
+  "_alanlar": {
+    "slug":     "benzersiz kisa ad (url-dostu, bosluksuz)",
+    "type":     "game | web | tool | other  -> filtre butonlarini belirler",
+    "featured": "true ise ana sayfada 'One Cikan Projeler' bolumunde gorunur",
+    "date":     "YYYY-MM  (siralama icin, yeniden eskiye)",
+    "cover":    "kapak gorseli yolu, orn: /assets/img/projects/oyunum.png  (bos birakabilirsin)",
+    "tags":     "teknoloji etiketleri dizisi",
+    "tr / en":  "title (baslik) ve summary (kisa aciklama)",
+    "links":    "her biri {label, url} olan dizi - GitHub, itch.io, canli site vb."
+  },
+
+  "projects": [
+    {
+      "slug": "ornek-oyun",
+      "type": "game",
+      "featured": true,
+      "date": "2026-06",
+      "cover": "",
+      "tags": ["Unity", "C#", "2D"],
+      "tr": {
+        "title": "Örnek Oyun",
+        "summary": "Bu bir örnek proje kartı. Kendi oyununu eklerken bu bloğu kopyalayıp içini doldurabilirsin."
+      },
+      "en": {
+        "title": "Example Game",
+        "summary": "This is a sample project card. Copy this block and fill it in when you add your own game."
+      },
+      "links": [
+        { "label": "itch.io", "url": "https://itch.io" },
+        { "label": "GitHub",  "url": "https://github.com" }
+      ]
+    },
+    {
+      "slug": "ornek-web-projesi",
+      "type": "web",
+      "featured": true,
+      "date": "2026-04",
+      "cover": "",
+      "tags": ["JavaScript", "CSS"],
+      "tr": {
+        "title": "Örnek Web Projesi",
+        "summary": "Geliştirdiğin bir web sitesi veya uygulama burada tanıtılır."
+      },
+      "en": {
+        "title": "Example Web Project",
+        "summary": "A website or app you have built gets introduced here."
+      },
+      "links": [
+        { "label": "Canlı", "url": "https://example.com" }
+      ]
+    },
+    {
+      "slug": "ornek-arac",
+      "type": "tool",
+      "featured": false,
+      "date": "2026-01",
+      "cover": "",
+      "tags": ["Python", "CLI"],
+      "tr": {
+        "title": "Örnek Araç",
+        "summary": "Kendin için yazdığın küçük araçlar da portfolyoda değerlidir."
+      },
+      "en": {
+        "title": "Example Tool",
+        "summary": "Small tools you built for yourself are valuable in a portfolio too."
+      },
+      "links": [
+        { "label": "GitHub", "url": "https://github.com" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Tema tercihini sayfa cizilmeden once uygula (ekran yanip sonmesin) */
+try{ if(localStorage.getItem('site.theme')==='light') document.documentElement.dataset.theme='light'; }catch(e){}</script>
+<title>Yönetim Paneli — Emre Biltekin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+
+<body class="admin">
+
+<!-- ==================== GİRİŞ ==================== -->
+<section id="login">
+  <div class="wrap">
+    <div class="login-card">
+      <h1>Yönetim Paneli</h1>
+      <p class="muted" style="font-size:.92rem">Yazılarını buradan yazıp doğrudan siteye yayınlarsın.</p>
+
+      <form id="loginForm">
+        <div class="field-row cols-2">
+          <div class="field">
+            <label for="lOwner">GitHub kullanıcı adın</label>
+            <input type="text" id="lOwner" autocomplete="username" placeholder="kullaniciadin" required>
+          </div>
+          <div class="field">
+            <label for="lRepo">Repo adı</label>
+            <input type="text" id="lRepo" placeholder="kullaniciadin.github.io" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="lToken">Fine-grained access token</label>
+          <input type="password" id="lToken" autocomplete="current-password" placeholder="github_pat_..." required>
+          <div class="hint">Token yalnızca bu tarayıcıda saklanır; repoya yazılmaz, GitHub dışında hiçbir sunucuya gönderilmez.</div>
+        </div>
+
+        <button class="btn btn-primary" id="loginBtn" type="submit" style="width:100%;justify-content:center">Bağlan</button>
+      </form>
+
+      <div class="notice">
+        <strong>Token nasıl alınır?</strong>
+        <ol>
+          <li>GitHub → Settings → Developer settings → <code>Personal access tokens</code> → <code>Fine-grained tokens</code></li>
+          <li><code>Generate new token</code></li>
+          <li><strong>Repository access:</strong> <code>Only select repositories</code> → sadece bu repoyu seç</li>
+          <li><strong>Permissions → Repository permissions → Contents:</strong> <code>Read and write</code> (başka hiçbir izin verme)</li>
+          <li>Bir son kullanma tarihi seç, oluştur ve token'ı buraya yapıştır</li>
+        </ol>
+      </div>
+
+      <p class="dim" style="font-size:.8rem;margin:0">
+        Ortak kullanılan bir bilgisayardaysan işin bitince sağ üstteki <strong>Çıkış</strong> ile token'ı sil.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PANEL ==================== -->
+<div id="app" hidden>
+
+  <header class="adm-top">
+    <div class="wrap adm-top-in">
+      <span class="adm-logo">Yönetim<span class="dot">.</span></span>
+      <span class="adm-repo" id="repoBadge"></span>
+      <span id="busyDot" hidden><span class="spinner"></span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-ghost btn-sm" href="/" target="_blank" rel="noopener">Siteyi aç ↗</a>
+      <button class="theme-toggle" id="admTheme" title="Temayı değiştir">
+        <span class="icon-moon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.3 2a1 1 0 0 0-.86 1.54A7.5 7.5 0 0 1 4.9 14.9a1 1 0 0 0-1.09 1.4A9.5 9.5 0 1 0 12.3 2Z"/></svg></span>
+        <span class="icon-sun"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-1-13h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.22 5.64l1.42-1.42 2.12 2.12-1.41 1.42L4.22 5.64Zm12.02 12.02 1.41-1.42 2.13 2.12-1.42 1.42-2.12-2.12Zm2.12-13.44 1.42 1.42-2.13 2.12-1.41-1.42 2.12-2.12ZM5.64 19.78l-1.42-1.42 2.12-2.12 1.42 1.41-2.12 2.13Z"/></svg></span>
+      </button>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn">Çıkış</button>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-block:26px 70px">
+
+    <div class="adm-tabs" role="tablist">
+      <button class="adm-tab" role="tab" data-view="list"     aria-selected="true">Yazılar</button>
+      <button class="adm-tab" role="tab" data-view="projects" aria-selected="false">Projeler</button>
+      <button class="adm-tab" role="tab" data-view="profile"  aria-selected="false">Profil</button>
+    </div>
+
+    <!-- ---------- Yazı listesi ---------- -->
+    <section id="view-list">
+      <div class="section-head" style="margin-bottom:20px">
+        <div>
+          <h2 style="font-size:1.35rem">Yazılar</h2>
+          <p>Yayınla dediğinde markdown dosyası, yazı sayfası, RSS ve sitemap tek commit'te güncellenir.</p>
+        </div>
+        <div style="display:flex;gap:9px">
+          <button class="btn btn-ghost btn-sm" id="refreshBtn">Tazele</button>
+          <button class="btn btn-primary btn-sm" id="newPostBtn">+ Yeni yazı</button>
+        </div>
+      </div>
+      <div id="postList"></div>
+    </section>
+
+    <!-- ---------- Yazı editörü ---------- -->
+    <section id="view-editor" hidden>
+      <h2 id="edTitle" style="font-size:1.35rem">Yeni yazı</h2>
+
+      <div id="restoreBar" class="restore-bar" hidden>
+        <span id="restoreText"></span>
+        <span style="margin-left:auto;display:flex;gap:8px">
+          <button class="btn btn-primary btn-sm" id="restoreYes" type="button">Geri yükle</button>
+          <button class="btn btn-ghost btn-sm" id="restoreNo" type="button">Yoksay</button>
+        </span>
+      </div>
+
+      <div class="field-row cols-3">
+        <div class="field">
+          <label for="fSlug">Kısa ad (URL)</label>
+          <input type="text" id="fSlug" placeholder="enflasyon-verisi">
+          <div class="hint">Adres: /blog/<span class="mono">kısa-ad</span>.html — küçük harf, rakam, tire.</div>
+        </div>
+        <div class="field">
+          <label for="fDate">Tarih</label>
+          <input type="date" id="fDate">
+        </div>
+        <div class="field">
+          <label for="fTags">Etiketler</label>
+          <input type="text" id="fTags" placeholder="finans, veri">
+          <div class="hint">Virgülle ayır.</div>
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label for="fCover">Kapak görseli</label>
+          <div class="input-with-btn">
+            <input type="text" id="fCover" placeholder="/assets/img/posts/kapak.jpg">
+            <button class="btn btn-ghost btn-sm" type="button" id="coverUploadBtn">Yükle…</button>
+          </div>
+          <div class="hint">Paylaşım kartında görünen görsel. İsteğe bağlı.</div>
+        </div>
+        <div class="field" style="display:flex;align-items:flex-end">
+          <label class="check" style="margin-bottom:11px">
+            <input type="checkbox" id="fDraft">
+            Taslak — sitede görünmez, sadece burada durur
+          </label>
+        </div>
+      </div>
+
+      <div class="lang-tabs" role="tablist">
+        <button type="button" data-lang="tr" aria-selected="true">Türkçe</button>
+        <button type="button" data-lang="en" aria-selected="false">English</button>
+      </div>
+
+      <div class="field">
+        <label for="fTitle">Başlık</label>
+        <input type="text" id="fTitle" placeholder="Yazının başlığı">
+      </div>
+
+      <div class="field">
+        <label for="fSummary">Özet</label>
+        <textarea id="fSummary" rows="2" placeholder="Listede ve paylaşım kartında görünecek bir-iki cümle."></textarea>
+        <div class="hint">Google ve WhatsApp/Twitter paylaşım kartlarında bu metin çıkar.</div>
+      </div>
+
+      <div class="editor-split">
+        <div>
+          <div class="pane-label" id="bodyLabel">İçerik (Türkçe, markdown)</div>
+
+          <div class="md-toolbar" id="mdToolbar">
+            <button class="md-btn" type="button" data-md="bold"   title="Kalın (Ctrl+B)"><b>B</b></button>
+            <button class="md-btn" type="button" data-md="italic" title="İtalik (Ctrl+I)"><i>I</i></button>
+            <span class="md-sep"></span>
+            <button class="md-btn" type="button" data-md="h2" title="Başlık">H2</button>
+            <button class="md-btn" type="button" data-md="h3" title="Alt başlık">H3</button>
+            <span class="md-sep"></span>
+            <button class="md-btn" type="button" data-md="ul"     title="Madde listesi">• Liste</button>
+            <button class="md-btn" type="button" data-md="ol"     title="Numaralı liste">1. Liste</button>
+            <button class="md-btn" type="button" data-md="quote"  title="Alıntı">❝ Alıntı</button>
+            <span class="md-sep"></span>
+            <button class="md-btn" type="button" data-md="link"   title="Bağlantı (Ctrl+K)">Link</button>
+            <button class="md-btn" type="button" data-md="code"   title="Satır içi kod">Kod</button>
+            <button class="md-btn" type="button" data-md="pre"    title="Kod bloğu">Kod bloğu</button>
+            <button class="md-btn" type="button" data-md="table"  title="Tablo">Tablo</button>
+            <span class="md-sep"></span>
+            <button class="md-btn" type="button" id="imgBtn" title="Görsel yükle ve ekle">🖼 Görsel</button>
+            <span class="autosave-note" id="autosaveNote"></span>
+          </div>
+
+          <textarea id="fBody" spellcheck="false" placeholder="## Başlık&#10;&#10;Metin... **kalın**, *italik*, [link](https://...)&#10;&#10;- madde&#10;- madde"></textarea>
+        </div>
+        <div>
+          <div class="pane-label">Önizleme</div>
+          <div class="preview-pane" id="preview"></div>
+        </div>
+      </div>
+
+      <div class="adm-actions">
+        <button class="btn btn-primary" id="saveBtn">Yayınla</button>
+        <button class="btn btn-ghost" id="cancelBtn">İptal</button>
+        <span class="dim" style="font-size:.83rem">Yayınladıktan ~1 dakika sonra site güncellenir.</span>
+      </div>
+    </section>
+
+    <!-- ---------- Proje listesi ---------- -->
+    <section id="view-projects" hidden>
+      <div class="section-head" style="margin-bottom:20px">
+        <div>
+          <h2 style="font-size:1.35rem">Projeler</h2>
+          <p>Oyunlar, web projeleri ve araçlar. “Öne çıkan” işaretlediklerin ana sayfada görünür.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" id="newProjBtn">+ Yeni proje</button>
+      </div>
+      <div id="projList"></div>
+    </section>
+
+    <!-- ---------- Proje editörü ---------- -->
+    <section id="view-projeditor" hidden>
+      <h2 id="prTitle" style="font-size:1.35rem">Yeni proje</h2>
+
+      <div class="field-row cols-3">
+        <div class="field">
+          <label for="jSlug">Kısa ad</label>
+          <input type="text" id="jSlug" placeholder="uzay-oyunu">
+        </div>
+        <div class="field">
+          <label for="jType">Tür</label>
+          <select id="jType">
+            <option value="game">Oyun</option>
+            <option value="web">Web</option>
+            <option value="tool">Araç</option>
+            <option value="other">Diğer</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="jDate">Tarih (YYYY-MM)</label>
+          <input type="text" id="jDate" placeholder="2026-06">
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label for="jCover">Kapak görseli</label>
+          <div class="input-with-btn">
+            <input type="text" id="jCover" placeholder="/assets/img/projects/oyun.png">
+            <button class="btn btn-ghost btn-sm" type="button" id="jCoverUploadBtn">Yükle…</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="jTags">Etiketler</label>
+          <input type="text" id="jTags" placeholder="Unity, C#, 2D">
+          <label class="check" style="margin-top:10px">
+            <input type="checkbox" id="jFeatured">
+            Öne çıkan — ana sayfada göster
+          </label>
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field"><label for="jTitleTr">Başlık (TR)</label><input type="text" id="jTitleTr"></div>
+        <div class="field"><label for="jTitleEn">Title (EN)</label><input type="text" id="jTitleEn"></div>
+      </div>
+      <div class="field-row cols-2">
+        <div class="field"><label for="jSumTr">Açıklama (TR)</label><textarea id="jSumTr" rows="4"></textarea></div>
+        <div class="field"><label for="jSumEn">Description (EN)</label><textarea id="jSumEn" rows="4"></textarea></div>
+      </div>
+
+      <h3 style="margin-top:28px">Bağlantılar</h3>
+      <div id="jLinks"></div>
+      <button class="btn btn-ghost btn-sm" id="addLink" type="button">+ Bağlantı ekle</button>
+
+      <div class="adm-actions">
+        <button class="btn btn-primary" id="saveProjBtn">Kaydet</button>
+        <button class="btn btn-ghost" id="cancelProjBtn">İptal</button>
+      </div>
+    </section>
+
+    <!-- ---------- Profil ---------- -->
+    <section id="view-profile" hidden>
+      <div class="section-head" style="margin-bottom:20px">
+        <div>
+          <h2 style="font-size:1.35rem">Profil</h2>
+          <p>Ana sayfa, hakkımda ve iletişim sayfalarında görünen bilgiler.</p>
+        </div>
+      </div>
+
+      <div class="field-row cols-3">
+        <div class="field">
+          <label for="pName">Ad Soyad</label>
+          <input type="text" id="pName">
+        </div>
+        <div class="field">
+          <label for="pEmail">E-posta</label>
+          <input type="email" id="pEmail">
+        </div>
+        <div class="field">
+          <label for="pAvatar">Fotoğraf</label>
+          <div class="input-with-btn">
+            <input type="text" id="pAvatar" placeholder="/assets/img/avatar.jpg">
+            <button class="btn btn-ghost btn-sm" type="button" id="avatarUploadBtn">Yükle…</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field"><label for="pRoleTr">Unvan (TR)</label><input type="text" id="pRoleTr"></div>
+        <div class="field"><label for="pRoleEn">Unvan (EN)</label><input type="text" id="pRoleEn"></div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field"><label for="pTagTr">Slogan (TR)</label><textarea id="pTagTr" rows="2"></textarea></div>
+        <div class="field"><label for="pTagEn">Slogan (EN)</label><textarea id="pTagEn" rows="2"></textarea></div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label for="pBioTr">Biyografi (TR)</label>
+          <textarea id="pBioTr" rows="7"></textarea>
+          <div class="hint">Paragrafları boş satırla ayır.</div>
+        </div>
+        <div class="field">
+          <label for="pBioEn">Biyografi (EN)</label>
+          <textarea id="pBioEn" rows="7"></textarea>
+        </div>
+      </div>
+
+      <h3 style="margin-top:32px">Sosyal bağlantılar</h3>
+      <div id="pSocial"></div>
+      <button class="btn btn-ghost btn-sm" id="addSocial" type="button">+ Bağlantı ekle</button>
+
+      <h3 style="margin-top:32px">Yetenekler</h3>
+      <div id="pSkills"></div>
+      <button class="btn btn-ghost btn-sm" id="addSkill" type="button">+ Grup ekle</button>
+
+      <div class="adm-actions">
+        <button class="btn btn-primary" id="saveProfileBtn">Profili kaydet</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<input type="file" id="fileInput" accept="image/*" hidden>
+<div class="toast-wrap" id="toasts"></div>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/markdown.js"></script>
+<script src="/assets/js/admin.js"></script>
+</body>
+</html>

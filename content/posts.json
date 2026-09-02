@@ -1,0 +1,31 @@
+{
+  "_not": "Blog yazilarinin dizini. Bu dosyayi ADMIN PANELI otomatik gunceller - elle duzenlemen gerekmez.",
+  "_alanlar": {
+    "slug":  "url-dostu kisa ad; yazi sayfasi /blog/<slug>.html adresinde durur",
+    "date":  "YYYY-MM-DD yayin tarihi",
+    "tags":  "etiketler dizisi (filtreleme icin)",
+    "draft": "true ise sitede gorunmez, sadece admin panelinde listelenir",
+    "cover": "kapak gorseli yolu (opsiyonel)",
+    "tr/en": "title, summary ve markdown dosyasinin yolu (file)"
+  },
+
+  "posts": [
+    {
+      "slug": "merhaba-dunya",
+      "date": "2026-09-02",
+      "draft": false,
+      "cover": "",
+      "tags": ["genel"],
+      "tr": {
+        "title": "Merhaba Dünya",
+        "summary": "Bu sitenin ilk yazısı. Neden kendi sitemi yaptığımı ve burada neler paylaşacağımı anlatıyorum.",
+        "file": "/content/posts/merhaba-dunya.tr.md"
+      },
+      "en": {
+        "title": "Hello World",
+        "summary": "The first post on this site. Why I built my own site and what I plan to share here.",
+        "file": "/content/posts/merhaba-dunya.en.md"
+      }
+    }
+  ]
+}

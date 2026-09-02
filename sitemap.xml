@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Yeni yazi eklendiginde admin paneli bu dosyayi da guncelleyecek. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://emrebiltekin.me/</loc><priority>1.0</priority></url>
+  <url><loc>https://emrebiltekin.me/projects.html</loc><priority>0.8</priority></url>
+  <url><loc>https://emrebiltekin.me/blog.html</loc><priority>0.8</priority></url>
+  <url><loc>https://emrebiltekin.me/about.html</loc><priority>0.6</priority></url>
+  <url><loc>https://emrebiltekin.me/contact.html</loc><priority>0.5</priority></url>
+  <url><loc>https://emrebiltekin.me/blog/merhaba-dunya.html</loc><lastmod>2026-09-02</lastmod><priority>0.7</priority></url>
+</urlset>

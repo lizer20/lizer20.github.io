@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Tema tercihini sayfa cizilmeden once uygula (ekran yanip sonmesin) */
+try{ if(localStorage.getItem('site.theme')==='light') document.documentElement.dataset.theme='light'; }catch(e){}</script>
+<title>404 — Emre Biltekin</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body data-page="404">
+<header id="site-header"></header>
+
+<main id="main" class="section">
+  <div class="wrap wrap-narrow" style="text-align:center;padding-block:6vh">
+    <p class="mono dim" style="font-size:clamp(4rem,18vw,9rem);line-height:1;margin:0 0 12px;letter-spacing:-.04em">404</p>
+    <h1 data-i18n="404.title"></h1>
+    <p class="muted" data-i18n="404.desc"></p>
+    <p style="margin-top:28px">
+      <a class="btn btn-primary" href="/"><span data-i18n="404.home"></span></a>
+    </p>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/pages.js"></script>
+</body>
+</html>

@@ -13,7 +13,7 @@ const SITE = {
   // goatcounter.com'da hesap acinca sana bir kod verilir (orn. "emrebiltekin").
   // Buraya yazdigin anda sayac calismaya baslar; bos birakirsan hicbir sey yuklenmez.
   // Cerez kullanmaz, kisisel veri toplamaz -> cerez uyarisi gerekmez.
-  goatcounter: ''
+  goatcounter: 'emrebiltekin'
 };
 
 const NAV = [

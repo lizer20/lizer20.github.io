@@ -12,7 +12,7 @@
   },
   "projects": [
     {
-      "slug": "ornek-oyun",
+      "slug": "borsa-oyunu",
       "type": "game",
       "featured": true,
       "date": "2026-06",

@@ -313,7 +313,7 @@ try{ if(localStorage.getItem('site.theme')==='light') document.documentElement.d
       <p class="tag" id="postNotice" hidden></p>
     </div>
 
-    <article class="prose" id="postBody">
+    <article class="prose surface" id="postBody">
       <div class="loading" data-i18n="common.loading"></div>
     </article>
 

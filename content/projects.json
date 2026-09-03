@@ -34,10 +34,6 @@
         {
           "label": "itch.io",
           "url": "https://lizer20.itch.io/borsa-patronu"
-        },
-        {
-          "label": "GitHub",
-          "url": "https://github.com"
         }
       ]
     },
@@ -62,7 +58,7 @@
       },
       "links": [
         {
-          "label": "Canlı",
+          "label": "Web",
           "url": "https://ahdem.online/"
         }
       ]

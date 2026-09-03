@@ -64,27 +64,26 @@
       ]
     },
     {
-      "slug": "ornek-arac",
+      "slug": "parti",
       "type": "tool",
       "featured": false,
       "date": "2026-01",
-      "cover": "",
+      "cover": "/assets/img/projects/screenshot_1-jb52p.webp",
       "tags": [
-        "Python",
-        "CLI"
+        "HTML"
       ],
       "tr": {
-        "title": "Örnek Araç",
+        "title": "Siyasi Parti Soyağacı",
         "summary": "Kendin için yazdığın küçük araçlar da portfolyoda değerlidir."
       },
       "en": {
-        "title": "Example Tool",
+        "title": "Political Party Family Tree",
         "summary": "Small tools you built for yourself are valuable in a portfolio too."
       },
       "links": [
         {
-          "label": "GitHub",
-          "url": "https://github.com"
+          "label": "Web",
+          "url": "https://emrebiltekin.me/turkiye_siyasi_partiler_soyagaci/index.html"
         }
       ]
     }

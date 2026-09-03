@@ -65,9 +65,9 @@
     },
     {
       "slug": "parti",
-      "type": "tool",
+      "type": "web",
       "featured": true,
-      "date": "2026-01",
+      "date": "2026-05",
       "cover": "/assets/img/projects/screenshot_1-jb52p.webp",
       "tags": [
         "HTML"

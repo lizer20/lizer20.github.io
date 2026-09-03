@@ -52,6 +52,10 @@ const GH = {
 
   async api(url, opts = {}){
     const res = await fetch(url.startsWith('http') ? url : this.base + url, {
+      // GitHub API kimlik dogrulamali yanitlara "Cache-Control: private, max-age=60"
+      // gonderir. Onbellekten okursak dalin ucunu ESKI haliyle gorur ve commit'i
+      // yanlis ataya baglariz -> 422 "Update is not a fast forward".
+      cache: 'no-store',
       ...opts,
       headers: {
         'Authorization': 'Bearer ' + this.token,
@@ -98,10 +102,8 @@ const GH = {
     // (orn. slug degisimi + dil silme ayni dosyayi iki kez isaretleyebilir)
     const unique = [...new Map(changes.map(c => [c.path, c])).values()];
 
-    const ref = await this.api('/git/ref/heads/' + this.branch);
-    const baseCommitSha = ref.object.sha;
-    const baseCommit = await this.api('/git/commits/' + baseCommitSha);
-
+    // 1) Bloblari bir kez yukle. Blob'lar icerik adresli oldugu icin
+    //    yeniden denemede tekrar yuklemeye gerek yok.
     const tree = [];
     for (const c of unique){
       if (c.remove){
@@ -118,19 +120,36 @@ const GH = {
       tree.push({ path: c.path, mode: '100644', type: 'blob', sha: blob.sha });
     }
 
-    const newTree = await this.api('/git/trees', {
-      method: 'POST',
-      body: JSON.stringify({ base_tree: baseCommit.tree.sha, tree })
-    });
-    const newCommit = await this.api('/git/commits', {
-      method: 'POST',
-      body: JSON.stringify({ message, tree: newTree.sha, parents: [baseCommitSha] })
-    });
-    await this.api('/git/refs/heads/' + this.branch, {
-      method: 'PATCH',
-      body: JSON.stringify({ sha: newCommit.sha })
-    });
-    return newCommit.sha;
+    // 2) Agac -> commit -> dali ilerlet.
+    //    Dalin ucu bu arada kaymissa (art arda yapilan islemler, GitHub'in
+    //    okuma kopyalarindaki gecikme) 422 doner; ucu tazeleyip tekrar deneriz.
+    const MAX = 4;
+    for (let deneme = 1; deneme <= MAX; deneme++){
+      const ref = await this.api('/git/ref/heads/' + this.branch);
+      const baseCommitSha = ref.object.sha;
+      const baseCommit = await this.api('/git/commits/' + baseCommitSha);
+
+      try {
+        const newTree = await this.api('/git/trees', {
+          method: 'POST',
+          body: JSON.stringify({ base_tree: baseCommit.tree.sha, tree })
+        });
+        const newCommit = await this.api('/git/commits', {
+          method: 'POST',
+          body: JSON.stringify({ message, tree: newTree.sha, parents: [baseCommitSha] })
+        });
+        await this.api('/git/refs/heads/' + this.branch, {
+          method: 'PATCH',
+          body: JSON.stringify({ sha: newCommit.sha })
+        });
+        return newCommit.sha;
+
+      } catch (err){
+        const kaymis = /not a fast forward/i.test(err.message);
+        if (!kaymis || deneme === MAX) throw err;
+        await new Promise(r => setTimeout(r, 600 * deneme));   // uc tazelensin, sonra tekrar
+      }
+    }
   }
 };
 

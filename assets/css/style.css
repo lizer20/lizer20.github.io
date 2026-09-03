@@ -15,6 +15,10 @@
   --bg-3:      #1C222D;
   --header-bg: rgba(11,14,19,.72);
 
+  /* Bolum bandi — sayfayi yatay seritlere ayirir (bkz. .band) */
+  --band:      #0E1218;
+  --band-line: #171C25;
+
   /* Cizgiler */
   --border:    #222835;
   --border-2:  #2E3743;
@@ -66,6 +70,10 @@
   --bg-2:      #F4F2ED;
   --bg-3:      #EAE7DF;
   --header-bg: rgba(251,250,247,.78);
+
+  /* Acik temada bant belirgin olmali — sayfa duz gorunmesin */
+  --band:      #F1EEE6;
+  --band-line: #E6E1D6;
 
   --border:    #E4E0D7;
   --border-2:  #CFC9BC;
@@ -132,6 +140,27 @@ code,kbd,pre,samp{ font-family:var(--font-mono); font-size:.9em; }
 .wrap-narrow{ max-width:var(--wrap-narrow); }
 .section{ padding-block:clamp(56px, 8vw, 96px); }
 .section-tight{ padding-block:clamp(36px, 5vw, 56px); }
+
+/* --- Bolum bandi ---
+   Tam genislikte hafif gri serit. Ardisik bolumlere donusumlu verilir;
+   boylece sayfa tek duz zemin olmaktan cikip yatay katmanlara ayrilir. */
+.band{
+  background:var(--band);
+  border-top:1px solid var(--band-line);
+  border-bottom:1px solid var(--band-line);
+}
+
+/* --- Yuzey paneli ---
+   Uzun metni (biyografi, yazi govdesi) zeminden ayiran kart.
+   Acik temada beyaz kagit hissi verir, okumayi rahatlatir. */
+.surface{
+  background:var(--bg-1);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:clamp(20px, 3.5vw, 40px);
+}
+.surface > .post-list > .post-item:first-child{ border-top:0; }
+.surface > .post-list > .post-item:last-child{ border-bottom:0; }
 
 /* ===== Header ===== */
 .site-header{

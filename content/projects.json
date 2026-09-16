@@ -84,6 +84,25 @@
           "url": "https://emrebiltekin.me/turkiye_siyasi_partiler_soyagaci/index.html"
         }
       ]
+    },
+    {
+      "slug": "siyasi-trivia",
+      "type": "game",
+      "featured": false,
+      "date": "2026-09",
+      "cover": "/assets/img/projects/kapak-2048x1000-0x95h.webp",
+      "tags": [
+        "JS"
+      ],
+      "tr": {
+        "title": "Siyasi Tarih Trivia",
+        "summary": "Cumhuriyet'in ilanından günümüze seçimler, darbeler, hükümetler ve siyasetçiler üzerine 319 soru ve 84 arşiv fotoğrafı. 25 bölümlük yolculukta dönem dönem ilerle ya da klasik tur, hayatta kalma ve günlük meydan okumayla kendini sına."
+      },
+      "en": {
+        "title": "",
+        "summary": ""
+      },
+      "links": []
     }
   ]
 }

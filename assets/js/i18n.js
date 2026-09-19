@@ -15,14 +15,14 @@ const I18N = {
     'nav.theme':     'Temayı değiştir',
 
     'home.featured.title': 'Öne Çıkan Projeler',
-    'home.featured.desc':  'Üzerinde çalıştığım web projeleri ve araçlar.',
+    'home.featured.desc':  'Üzerinde çalıştığım projeler ve katıldığım konferanslar.',
     'home.featured.all':   'Tüm projeler',
     'home.latest.title':   'Son Yazılar',
     'home.latest.desc':    'Teknoloji, finans ve öğrendiklerim üzerine yazdıklarım.',
     'home.latest.all':     'Tüm yazılar',
 
     'projects.title':  'Projeler',
-    'projects.desc':   'Geliştirdiğim web projeleri ve araçlar.',
+    'projects.desc':   'Geliştirdiğim projeler ve katıldığım konferanslar.',
     'projects.search': 'Proje ara...',
     'projects.empty':  'Bu filtreye uyan proje yok.',
 
@@ -44,6 +44,7 @@ const I18N = {
     'filter.game':  'Oyun',
     'filter.web':   'Web',
     'filter.tool':  'Araç',
+    'filter.conference': 'Konferans',
     'filter.other': 'Diğer',
 
     'common.loading':   'Yükleniyor...',
@@ -73,14 +74,14 @@ const I18N = {
     'nav.theme':     'Toggle theme',
 
     'home.featured.title': 'Featured Projects',
-    'home.featured.desc':  'Web projects and tools I have been working on.',
+    'home.featured.desc':  'Projects I have worked on and conferences I have taken part in.',
     'home.featured.all':   'All projects',
     'home.latest.title':   'Latest Writing',
     'home.latest.desc':    'Notes and thoughts on technology and finance.',
     'home.latest.all':     'All posts',
 
     'projects.title':  'Projects',
-    'projects.desc':   'Web projects and tools I have built.',
+    'projects.desc':   'Projects I have built and conferences I have taken part in.',
     'projects.search': 'Search projects...',
     'projects.empty':  'No projects match this filter.',
 
@@ -102,6 +103,7 @@ const I18N = {
     'filter.game':  'Game',
     'filter.web':   'Web',
     'filter.tool':  'Tool',
+    'filter.conference': 'Conference',
     'filter.other': 'Other',
 
     'common.loading':   'Loading...',

@@ -761,7 +761,7 @@ async function loadProjects(){
   if (!Array.isArray(projectsDoc.projects)) projectsDoc.projects = [];
 }
 
-const TYPE_LABEL = { game: 'Oyun', web: 'Web', tool: 'Araç', other: 'Diğer' };
+const TYPE_LABEL = { game: 'Oyun', web: 'Web', tool: 'Araç', conference: 'Konferans', other: 'Diğer' };
 
 function renderProjList(){
   const box = $('#projList');

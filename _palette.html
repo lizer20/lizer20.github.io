@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* Tema tercihini sayfa cizilmeden once uygula (ekran yanip sonmesin) */
+try{ if(localStorage.getItem('site.theme')==='light') document.documentElement.dataset.theme='light'; }catch(e){}</script>
+<title>Renk karşılaştırma — geçici</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+  body{ padding:20px 0 60px; }
+  .opts{ display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); }
+  .opt{ border:1px solid var(--border); border-radius:var(--r); background:var(--bg-1); padding:16px; }
+  .opt-head{ display:flex; align-items:center; gap:11px; margin-bottom:14px; }
+  .chip{ width:28px; height:28px; border-radius:8px; background:var(--accent); flex:none; box-shadow:0 0 0 4px var(--accent-soft); }
+  .opt-head b{ font-family:var(--font-head); font-size:.98rem; }
+  .opt-head code{ margin-left:auto; color:var(--text-3); font-size:.74rem; }
+  .opt h4{ font-family:var(--font-head); font-size:1.15rem; margin:0 0 4px; letter-spacing:-.02em; }
+  .opt p{ margin:0 0 12px; color:var(--text-2); font-size:.86rem; }
+  .row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .rule{ border-top:1px solid var(--border); margin:13px 0 11px; }
+  .headline{ font-family:var(--font-head); font-weight:600; font-size:.98rem; margin:3px 0 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 style="font-size:1.45rem;margin-bottom:6px">Vurgu rengi karşılaştırması</h1>
+  <p class="muted" style="font-size:.9rem;margin-bottom:22px">Aynı bileşenler, altı farklı vurgu. Beğendiğinin numarasını söyle yeter.</p>
+  <div class="opts" id="opts"></div>
+</div>
+
+<script>
+const OPTIONS = [
+  { n:1, name:'Periwinkle Mavi', note:'şu anki', a:'#6B8AFF', a2:'#93A9FF', rgb:'107,138,255' },
+  { n:2, name:'Petrol / Teal',   note:'sakin, danışmanlık hissi', a:'#2FB4A6', a2:'#5ECFC2', rgb:'47,180,166' },
+  { n:3, name:'Kehribar / Bakır',note:'sıcak, editoryal', a:'#E0A33E', a2:'#EEBB63', rgb:'224,163,62' },
+  { n:4, name:'Zümrüt Yeşil',    note:'klasik developer', a:'#35C08A', a2:'#5FD6A8', rgb:'53,192,138' },
+  { n:5, name:'Nötr Gümüş',      note:'en sessiz, en ciddi', a:'#AFBACB', a2:'#CBD4E1', rgb:'175,186,203' },
+  { n:6, name:'Klasik Azur',     note:'güven / finans mavisi', a:'#3D8BFD', a2:'#6BA6FE', rgb:'61,139,253' }
+];
+
+document.getElementById('opts').innerHTML = OPTIONS.map(o => `
+  <section class="opt" style="--accent:${o.a};--accent-2:${o.a2};--accent-soft:rgba(${o.rgb},.12);--accent-ring:rgba(${o.rgb},.40)">
+    <div class="opt-head">
+      <span class="chip"></span>
+      <b>${o.n}. ${o.name}</b>
+      <code>${o.a}</code>
+    </div>
+
+    <span class="eyebrow" style="margin-bottom:10px"><span class="pulse"></span>GELİŞTİRİCİ</span>
+    <h4>Emre Biltekin</h4>
+    <p>${o.note}</p>
+
+    <div class="row">
+      <a class="btn btn-primary btn-sm" href="#">Projeler</a>
+      <a class="btn btn-ghost btn-sm" href="#">Hakkımda</a>
+      <a class="link-more" href="#">Tümü →</a>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="mono dim" style="font-size:.75rem">2 Eylül 2026 · 6 dk okuma</div>
+    <div class="headline">Enflasyon verisini okumanın üç yolu</div>
+    <div class="tags"><span class="tag tag-accent">finans</span><span class="tag">veri</span></div>
+  </section>
+`).join('');
+</script>
+</body>
+</html>

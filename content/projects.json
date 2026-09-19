@@ -103,47 +103,6 @@
         "summary": ""
       },
       "links": []
-    },
-    {
-      "slug": "diplomasi-2050",
-      "type": "conference",
-      "featured": false,
-      "date": "2025-04",
-      "cover": "",
-      "tags": [
-        "Diplomasi",
-        "Simülasyon"
-      ],
-      "tr": {
-        "title": "Kültürlerarası Diplomasi Topluluğu - Diplomasi 2050",
-        "summary": ""
-      },
-      "en": {
-        "title": "",
-        "summary": ""
-      },
-      "links": []
-    },
-    {
-      "slug": "kdit1",
-      "type": "conference",
-      "featured": false,
-      "date": "2025-12",
-      "cover": "",
-      "tags": [
-        "Diplomasi",
-        "Konferans",
-        "Kriz"
-      ],
-      "tr": {
-        "title": "KDİT Yeni Düzen Orta Doğu-Keşmir Diplomasi Simülasyonu",
-        "summary": ""
-      },
-      "en": {
-        "title": "KDIT New Order Middle East-Kashmir Diplomacy Simulation",
-        "summary": ""
-      },
-      "links": []
     }
   ]
 }

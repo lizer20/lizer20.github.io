@@ -103,6 +103,26 @@
         "summary": ""
       },
       "links": []
+    },
+    {
+      "slug": "diplomasi-2050",
+      "type": "conference",
+      "featured": false,
+      "date": "2025-04",
+      "cover": "",
+      "tags": [
+        "Diplomasi",
+        "Simülasyon"
+      ],
+      "tr": {
+        "title": "Kültürlerarası Diplomasi Topluluğu - Diplomasi 2050",
+        "summary": ""
+      },
+      "en": {
+        "title": "",
+        "summary": ""
+      },
+      "links": []
     }
   ]
 }

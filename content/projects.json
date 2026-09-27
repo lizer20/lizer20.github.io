@@ -88,11 +88,12 @@
     {
       "slug": "siyasi-trivia",
       "type": "game",
-      "featured": false,
+      "featured": true,
       "date": "2026-09",
       "cover": "/assets/img/projects/kapak-2048x1000-0x95h.webp",
       "tags": [
-        "JS"
+        "Tarih",
+        "Bilgi Yarışması"
       ],
       "tr": {
         "title": "Siyasi Tarih Trivia",
